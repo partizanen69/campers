@@ -1,10 +1,10 @@
-import { Link, Navigate, Route, Routes } from "react-router-dom";
-import { AppStyled, NavStyled } from "./App.styled";
-import { Home } from "./pages/Home/Home";
-import { Suspense, lazy } from "react";
+import { Link, Navigate, Route, Routes } from 'react-router-dom';
+import { AppStyled, NavStyled } from './App.styled';
+import { Home } from './pages/Home/Home';
+import { Suspense, lazy } from 'react';
 
-const Catalog = lazy(() => import("./pages/Catalog/Catalog"));
-const Favorites = lazy(() => import("./pages/Favorites/Favorites"));
+const Catalog = lazy(() => import('./pages/Catalog/Catalog'));
+const Favorites = lazy(() => import('./pages/Favorites/Favorites'));
 
 export const App = () => {
   return (
