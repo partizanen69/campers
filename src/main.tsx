@@ -6,6 +6,8 @@ import { App } from './App';
 
 import 'normalize.css';
 import './index.css';
+import '@fontsource/inter';
+import '@fontsource/inter/600.css';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 

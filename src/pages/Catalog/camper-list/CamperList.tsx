@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectCampers } from '../../../store/selectors';
 import { fetchCampers } from '../../../store/operations';
 import { AppDispatch } from '../../../store/store';
+import { CamperListStyled } from './CamperList.styled';
+import { CamperCard } from './camper-card/CamperCard';
 
 export const CamperList: FC = () => {
   // const { items: campers } = useSelector(selectCampers);
@@ -16,5 +18,14 @@ export const CamperList: FC = () => {
     dispatch(fetchCampers());
   }, [dispatch]);
 
-  return <div className="camper-list"></div>;
+  return (
+    campers &&
+    campers.length && (
+      <CamperListStyled className="camper-list">
+        {campers.map(camper => (
+          <CamperCard camper={camper} />
+        ))}
+      </CamperListStyled>
+    )
+  );
 };
