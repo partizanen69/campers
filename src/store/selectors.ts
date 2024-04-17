@@ -5,6 +5,9 @@ export const selectCampers = (state: RootState) => {
   return state.campers.items;
 };
 
+export const selectCamperSelectedForModal = (state: RootState) =>
+  state.catalogPage.camperSelectedForModal;
+
 // export const selectIsContactsLoading = state => state.contacts.isLoading;
 
 // export const selectFilter = state => state.filter;

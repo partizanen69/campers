@@ -47,16 +47,6 @@ export const CamperCardStyled = styled.div`
           color: #101828;
         }
 
-        .camper-price {
-          flex: 0 1 auto;
-          font-family: Inter;
-          font-size: 24px;
-          font-weight: 600;
-          line-height: 30px;
-          text-align: left;
-          color: #101828;
-        }
-
         .camper-add-favorite {
           flex: 0 1 auto;
           width: 24px;
@@ -68,29 +58,49 @@ export const CamperCardStyled = styled.div`
       .bottom {
         display: flex;
         gap: 16px;
+      }
+    }
 
-        .reviews {
-          display: flex;
-          gap: 4px;
+    .camper-details-features {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
 
-          font-family: Inter;
-          font-size: 16px;
-          font-weight: 400;
-          line-height: 24px;
-          text-align: left;
-          text-decoration: underline;
-        }
+      .capitalize {
+        text-transform: capitalize;
+      }
 
-        .address {
-          display: flex;
-          gap: 4px;
+      .category {
+        border-radius: 100px;
+        padding: 12px 18px 12px 18px;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        background-color: #f2f4f7;
 
-          font-family: Inter;
-          font-size: 16px;
-          font-weight: 400;
-          line-height: 24px;
-          text-align: left;
-        }
+        font-family: Inter;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 20px;
+        /* text-align: left; */
+        color: #101828;
+      }
+    }
+
+    .camper-details-showmore {
+      button {
+        padding: 16px 40px 16px 40px;
+        border-radius: 200px;
+        opacity: 0px;
+        background-color: #e44848;
+
+        font-family: Inter;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: -0.005em;
+        text-align: left;
+        color: #ffffff;
       }
     }
   }
