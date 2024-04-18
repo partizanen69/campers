@@ -6,6 +6,8 @@ import { selectCamperSelectedForModal } from '../../../store/selectors';
 import { Reviews } from '../../../components/Reviews/Reviews';
 import { Location } from '../../../components/Location/Location';
 import { Price } from '../../../components/Price/Price';
+import { CamperPhoto } from '../../../components/CamperPhoto/CamperPhoto';
+import { CamperModalTabs } from '../camper-modal-tabs/CamperModalTabs';
 
 export const CamperDetailsModal: FC = () => {
   const dispatch = useDispatch();
@@ -80,8 +82,18 @@ export const CamperDetailsModal: FC = () => {
             <Price price={camper.price} />
           </div>
         </div>
-        <div className="modal-gallery"></div>
-        <div className="modal-description"></div>
+        <div className="modal-gallery">
+          {camper.gallery &&
+            camper.gallery.length > 0 &&
+            camper.gallery.slice(0, 3).map(src => <CamperPhoto src={src} />)}
+        </div>
+        <div className="modal-description-features-reviews">
+          {/* TODO: remove slice */}
+          <div className="modal-description">
+            {camper.description.slice(0, 100)}
+          </div>
+          <CamperModalTabs />
+        </div>
       </div>
     </CamperDetailsModalStyled>
   );

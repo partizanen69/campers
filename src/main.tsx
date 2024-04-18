@@ -8,6 +8,7 @@ import 'normalize.css';
 import './index.css';
 import '@fontsource/inter';
 import '@fontsource/inter/600.css';
+import '@fontsource/inter/500.css';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 

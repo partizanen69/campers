@@ -11,12 +11,24 @@ export const CamperDetailsModalStyled = styled.div`
   justify-content: center;
   align-items: center;
 
+  // hide scroll bar
+  .camper-details-modal::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+
   .camper-details-modal {
+    width: 982px;
     height: 720px;
     padding: 40px;
+    display: flex;
     gap: 24px;
+    flex-direction: column;
     border-radius: 20px;
     background-color: #ffffff;
+    overflow-y: scroll;
+    // hide scroll bar
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
 
     .modal-header {
       display: flex;
@@ -52,6 +64,17 @@ export const CamperDetailsModalStyled = styled.div`
           gap: 16px;
         }
       }
+    }
+
+    .modal-gallery {
+      display: flex;
+      gap: 16px;
+    }
+
+    .modal-description-features-reviews {
+      display: flex;
+      flex-direction: column;
+      gap: 44px;
     }
   }
 `;

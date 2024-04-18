@@ -10,18 +10,6 @@ export const CamperCardStyled = styled.div`
   border-radius: 20px;
   border: 1px solid #10182833;
 
-  .photo {
-    flex: 0 0 auto;
-    width: 290px;
-    height: 310px;
-
-    img {
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-    }
-  }
-
   .camper-details {
     flex: 1 1 auto;
     display: flex;
@@ -58,32 +46,6 @@ export const CamperCardStyled = styled.div`
       .bottom {
         display: flex;
         gap: 16px;
-      }
-    }
-
-    .camper-details-features {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-
-      .capitalize {
-        text-transform: capitalize;
-      }
-
-      .category {
-        border-radius: 100px;
-        padding: 12px 18px 12px 18px;
-        display: flex;
-        gap: 8px;
-        align-items: center;
-        background-color: #f2f4f7;
-
-        font-family: Inter;
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 20px;
-        /* text-align: left; */
-        color: #101828;
       }
     }
 

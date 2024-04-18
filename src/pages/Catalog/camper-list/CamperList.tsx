@@ -18,9 +18,11 @@ export const CamperList: FC = () => {
     dispatch(fetchCampers());
   }, [dispatch]);
 
+  // TODO: add loader
+
   return (
     campers &&
-    campers.length && (
+    campers.length > 0 && (
       <CamperListStyled className="camper-list">
         {campers.map(camper => (
           <CamperCard camper={camper} />
