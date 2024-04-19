@@ -1,7 +1,22 @@
-import { FC } from 'react';
+import { FC, useMemo, useState } from 'react';
 import { BookingFormStyled } from './BookingForm.styled';
+import Calendar from 'react-calendar';
 
 export const BookingForm: FC = () => {
+  const [dateRange, setDateRange] = useState<[Date, Date] | null>(null);
+  const [isCalendarVisible, setIsCalendarVisible] = useState<boolean>(false);
+
+  const dateInputValue = useMemo((): string => {
+    if (!dateRange) {
+      return '';
+    }
+
+    const [from, to] = dateRange;
+    return `${from.toLocaleDateString('uk-UA')} - ${to.toLocaleDateString(
+      'uk-UA'
+    )}`;
+  }, [dateRange]);
+
   return (
     <BookingFormStyled>
       <div className="booking-form-header">
@@ -19,9 +34,14 @@ export const BookingForm: FC = () => {
             type="text"
             className="field"
             style={{ width: '100%' }}
+            value={dateInputValue}
+            disabled={true}
           ></input>
           <div className="calendar">
             <svg
+              onClick={() => {
+                setIsCalendarVisible(prevValue => !prevValue);
+              }}
               width="20"
               height="20"
               viewBox="0 0 20 20"
@@ -57,6 +77,20 @@ export const BookingForm: FC = () => {
                 stroke-linejoin="round"
               />
             </svg>
+            {isCalendarVisible && (
+              <Calendar
+                className="booking-form-calendar"
+                tileClassName="booking-calendar-item"
+                view="month"
+                onChange={value => {
+                  console.info('User selected value in the calendar', value);
+                  setDateRange(value as [Date, Date]);
+                  setIsCalendarVisible(false);
+                }}
+                value={dateRange}
+                selectRange={true}
+              />
+            )}
           </div>
         </div>
         <textarea placeholder="Comment" className="field"></textarea>
