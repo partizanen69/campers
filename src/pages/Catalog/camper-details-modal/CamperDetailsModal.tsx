@@ -60,16 +60,16 @@ export const CamperDetailsModal: FC = () => {
                 <path
                   d="M24 8L8 24"
                   stroke="#101828"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M8 8L24 24"
                   stroke="#101828"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </div>
@@ -85,7 +85,9 @@ export const CamperDetailsModal: FC = () => {
         <div className="modal-gallery">
           {camper.gallery &&
             camper.gallery.length > 0 &&
-            camper.gallery.slice(0, 3).map(src => <CamperPhoto src={src} />)}
+            camper.gallery
+              .slice(0, 3)
+              .map(src => <CamperPhoto key={src} src={src} />)}
         </div>
         <div className="modal-description-features-reviews">
           {/* TODO: remove slice?? */}
