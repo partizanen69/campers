@@ -39,9 +39,18 @@ export const TabContentStyled = styled.div`
 
   .tab-content-details {
     width: 430px;
+    height: 532px;
+    overflow-y: scroll;
     display: flex;
     flex-direction: column;
     gap: 44px;
+
+    // hide scroll bar
+    &::-webkit-scrollbar {
+      display: none; /* Safari and Chrome */
+    }
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
 
     .vehicle-details {
       display: flex;
@@ -77,12 +86,5 @@ export const TabContentStyled = styled.div`
         }
       }
     }
-  }
-
-  .tab-content-reviews {
-    width: 430px;
-    display: flex;
-    flex-direction: column;
-    gap: 44px;
   }
 `;

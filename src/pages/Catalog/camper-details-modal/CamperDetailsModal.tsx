@@ -88,7 +88,7 @@ export const CamperDetailsModal: FC = () => {
             camper.gallery.slice(0, 3).map(src => <CamperPhoto src={src} />)}
         </div>
         <div className="modal-description-features-reviews">
-          {/* TODO: remove slice */}
+          {/* TODO: remove slice?? */}
           <div className="modal-description">
             {camper.description.slice(0, 100)}
           </div>

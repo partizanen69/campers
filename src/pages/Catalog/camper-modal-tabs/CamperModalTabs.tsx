@@ -9,11 +9,7 @@ import { useSelector } from 'react-redux';
 import { selectCamperSelectedForModal } from '../../../store/selectors';
 import { BookingForm } from '../booking-form.tsx/BookingForm';
 import { ReviewsList } from '../reviews-list/ReviewsList';
-
-export enum SelectedTab {
-  features,
-  reviews,
-}
+import { SelectedTab } from './CamperModalTabs.types';
 
 export const CamperModalTabs: FC = () => {
   const camper = useSelector(selectCamperSelectedForModal)!;
@@ -73,7 +69,9 @@ export const CamperModalTabs: FC = () => {
             </div>
           </div>
         )}
-        {selectedTab === SelectedTab.reviews && <ReviewsList />}
+        {selectedTab === SelectedTab.reviews && (
+          <ReviewsList reviews={camper.reviews} />
+        )}
         <BookingForm />
       </TabContentStyled>
     </>
