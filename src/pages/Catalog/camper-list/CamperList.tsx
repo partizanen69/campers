@@ -25,7 +25,7 @@ export const CamperList: FC = () => {
     campers.length > 0 && (
       <CamperListStyled className="camper-list">
         {campers.map(camper => (
-          <CamperCard camper={camper} />
+          <CamperCard key={camper._id} camper={camper} />
         ))}
       </CamperListStyled>
     )
