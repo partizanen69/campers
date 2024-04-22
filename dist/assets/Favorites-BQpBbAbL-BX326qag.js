@@ -1,0 +1,1 @@
+import{a as o,P as s,L as c,I as f,Y as n}from"./index-Dladv8qV.js";import{s as p}from"./campers-CKcTMKlW-_F5eXiU4.js";const m=()=>{const a=o(),e=s.useCallback(()=>{a(c({favorite:!0}))},[a]),t=s.useCallback(({page:r})=>{a(f({page:r,favorite:!0}))},[a]);return n.jsx(p,{fetchInitialCampersFunc:e,fetchMoreCampersFunc:t})};export{m as default};
