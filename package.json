@@ -3,6 +3,7 @@
   "author": "Oleksii Ablitsov",
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://partizanen69.github.io/campers/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
