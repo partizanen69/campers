@@ -7,12 +7,13 @@ import * as Yup from 'yup';
 
 export type DateRange = [Date, Date];
 
-interface FormValues {
-  name: string;
-  email: string;
-  dateRange: string;
-  comment: string;
-}
+// commented to satisfy compiler
+// interface FormValues {
+//   name: string;
+//   email: string;
+//   dateRange: string;
+//   comment: string;
+// }
 
 const BookingFormValidationSchema = Yup.object().shape({
   name: Yup.string().max(50, 'Too Long!').required('Required'),
@@ -43,8 +44,9 @@ export const BookingForm: FC = () => {
           comment: '',
         }}
         validationSchema={BookingFormValidationSchema}
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        onSubmit={(values: FormValues) => {
+        // commented to satisfy compiler
+        // onSubmit={(values: FormValues) => {
+        onSubmit={() => {
           window.location.reload();
         }}
       >
