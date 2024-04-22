@@ -29,7 +29,6 @@ export const CamperList: FC<{
     fetchInitialCampersFunc();
   }, [fetchInitialCampersFunc]);
 
-  console.log('isInitialLoading', isInitialLoading);
   return (
     <CamperListWrap className="campers-list-wrap">
       {isInitialLoading ? (

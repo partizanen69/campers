@@ -114,7 +114,6 @@ const campersSlice = createSlice({
     builder
       // fetchInitialCampers
       .addCase(fetchInitialCampers.pending, state => {
-        console.log('.addCase(fetchInitialCampers.pending');
         state.isInitialLoading = true;
       })
       .addCase(fetchInitialCampers.rejected, (state, action) => {

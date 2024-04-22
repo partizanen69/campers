@@ -43,8 +43,8 @@ export const BookingForm: FC = () => {
           comment: '',
         }}
         validationSchema={BookingFormValidationSchema}
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         onSubmit={(values: FormValues) => {
-          console.log('Booking form values', values);
           window.location.reload();
         }}
       >
