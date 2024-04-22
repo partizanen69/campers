@@ -4,12 +4,12 @@ import {
   TabContentStyled,
 } from './CamperModalTabs.styled';
 import { CamperModalTab } from './CamperModalTab';
-import { CamperFeatures } from '../../../components/CamperFeatures/CamperFeatures';
 import { useSelector } from 'react-redux';
 import { selectCamperSelectedForModal } from '../../../store/selectors';
 import { BookingForm } from '../booking-form.tsx/BookingForm';
 import { ReviewsList } from '../reviews-list/ReviewsList';
 import { SelectedTab } from './CamperModalTabs.types';
+import { CamperFeatures } from '../../CamperFeatures/CamperFeatures';
 
 export const CamperModalTabs: FC = () => {
   const camper = useSelector(selectCamperSelectedForModal)!;

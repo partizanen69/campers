@@ -1,19 +1,28 @@
-import { FC } from 'react';
-import { CatalogStyled } from './Catalog.styled';
-import { CamperList } from './camper-list/CamperList';
-import { CamperDetailsModal } from './camper-details-modal/CamperDetailsModal';
-import { useSelector } from 'react-redux';
-import { selectCamperSelectedForModal } from '../../store/selectors';
+import { FC, useCallback } from 'react';
+import Campers from '../../components/Campers/campers';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../store/store';
+import { fetchInitialCampers, fetchMoreCampers } from '../../store/operations';
 
 const Catalog: FC = () => {
-  const camperSelectedForModal = useSelector(selectCamperSelectedForModal);
+  const dispatch = useDispatch<AppDispatch>();
+
+  const fetchInitialCampersFunc = useCallback(() => {
+    dispatch(fetchInitialCampers());
+  }, [dispatch]);
+
+  const fetchMoreCampersFunc = useCallback(
+    ({ page }: { page: number }) => {
+      dispatch(fetchMoreCampers({ page }));
+    },
+    [dispatch]
+  );
 
   return (
-    <CatalogStyled>
-      <div className="sidebar"></div>
-      <CamperList />
-      {camperSelectedForModal && <CamperDetailsModal />}
-    </CatalogStyled>
+    <Campers
+      fetchInitialCampersFunc={fetchInitialCampersFunc}
+      fetchMoreCampersFunc={fetchMoreCampersFunc}
+    />
   );
 };
 

@@ -1,12 +1,12 @@
 import { FC, useCallback, useEffect } from 'react';
 import { CamperDetailsModalStyled } from './CamperDetailsModal.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCamperSelectedForModal } from '../../../store/catalogPageSlice';
 import { selectCamperSelectedForModal } from '../../../store/selectors';
-import { Reviews } from '../../../components/Reviews/Reviews';
-import { Location } from '../../../components/Location/Location';
-import { Price } from '../../../components/Price/Price';
-import { CamperPhoto } from '../../../components/CamperPhoto/CamperPhoto';
+import { setCamperSelectedForModal } from '../../../store/campersSlice';
+import { CamperPhoto } from '../../CamperPhoto/CamperPhoto';
+import { Reviews } from '../../Reviews/Reviews';
+import { Location } from '../../Location/Location';
+import { Price } from '../../Price/Price';
 import { CamperModalTabs } from '../camper-modal-tabs/CamperModalTabs';
 
 export const CamperDetailsModal: FC = () => {

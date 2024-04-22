@@ -1,5 +1,5 @@
-import { FC } from "react";
+import { FC } from 'react';
 
 export const Home: FC = () => {
-  return "This is home";
+  return 'We are selling campers. Buy one and pursue your dream';
 };

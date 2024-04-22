@@ -8,6 +8,8 @@ import {
 } from './App.styled';
 import { Home } from './pages/Home/Home';
 import { Suspense, lazy } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Catalog = lazy(() => import('./pages/Catalog/Catalog'));
 const Favorites = lazy(() => import('./pages/Favorites/Favorites'));
@@ -26,7 +28,6 @@ export const App = () => {
       </NavStyled>
       {/* </ContentContainerStyled>
       </ContainerStyled> */}
-
       <Suspense fallback={<div>Loading...</div>}>
         <ContainerStyled>
           <ContentContainerStyled>
@@ -39,6 +40,7 @@ export const App = () => {
           </ContentContainerStyled>
         </ContainerStyled>
       </Suspense>
+      <ToastContainer />
     </AppStyled>
   );
 };

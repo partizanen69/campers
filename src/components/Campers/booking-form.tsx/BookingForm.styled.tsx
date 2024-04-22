@@ -45,27 +45,39 @@ export const BookingFormStyled = styled.div`
       flex-direction: column;
       gap: 14px;
 
-      input,
-      textarea {
-        outline: none;
-        border: none;
-      }
-
-      .field {
-        padding: 18px;
-        border-radius: 10px;
-        background-color: #f7f7f7;
-      }
-
-      input:focus,
-      textarea:focus {
-        outline-style: solid;
-        outline-color: rgb(208, 206, 206, 0.5);
-      }
-
-      .calendar-input-wrap {
-        position: relative;
+      .field-wrap {
         width: 100%;
+
+        .field {
+          width: 100%;
+          padding: 18px;
+          border-radius: 10px;
+          background-color: #f7f7f7;
+        }
+
+        .field-errors {
+        }
+
+        input,
+        textarea {
+          outline: none;
+          border: none;
+        }
+
+        input:focus,
+        textarea:focus {
+          outline-style: solid;
+          outline-color: rgb(208, 206, 206, 0.5);
+        }
+
+        .calendar-input-wrap {
+          position: relative;
+        }
+
+        .field-errors {
+          color: #e44848;
+          font-size: 12px;
+        }
       }
     }
 

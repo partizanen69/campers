@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const CamperCardStyled = styled.div`
-  /* width: Hug (888px) px; */
   min-height: 358px;
   max-height: 358px;
   padding: 24px;
@@ -33,13 +32,6 @@ export const CamperCardStyled = styled.div`
           line-height: 30px;
           text-align: left;
           color: #101828;
-        }
-
-        .camper-add-favorite {
-          flex: 0 1 auto;
-          width: 24px;
-          height: 24px;
-          margin-left: 10px;
         }
       }
 

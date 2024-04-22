@@ -5,8 +5,7 @@ import { CalendarPickerStyled } from './CalendarPicker.styled';
 
 export const CalendarPicker: FC<{
   setDateRange: (dateRange: DateRange) => void;
-  dateRange: DateRange | null;
-}> = ({ setDateRange, dateRange }) => {
+}> = ({ setDateRange }) => {
   const [isCalendarVisible, setIsCalendarVisible] = useState<boolean>(false);
 
   return (
@@ -60,7 +59,6 @@ export const CalendarPicker: FC<{
             setDateRange(value as [Date, Date]);
             setIsCalendarVisible(false);
           }}
-          value={dateRange}
           selectRange={true}
         />
       )}

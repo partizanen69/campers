@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Review } from '../../../store/campersSlice';
 import { ReviewItemStyled } from './ReviewsList.styled';
-import { Star } from '../../../components/Star/Star';
+import { Star } from '../../Star/Star';
 
 export const ReviewItem: FC<{
   reviewItem: Review;

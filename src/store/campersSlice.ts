@@ -1,32 +1,17 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { fetchCampers } from './operations';
-// import { fetchContacts, addContact, deleteContact } from './operations';
-
-const handlePending = (state: CampersSliceState) => {
-  state.isLoading = true;
-};
-
-const handleRejected = (
-  state: CampersSliceState,
-  action: PayloadAction<
-    any,
-    string,
-    {
-      arg: void;
-      requestId: string;
-      requestStatus: 'rejected';
-    },
-    never
-  >
-) => {
-  state.isLoading = false;
-  state.error = action.payload;
-};
+import { fetchInitialCampers, fetchMoreCampers } from './operations';
+import { PER_PAGE_CAMPERS_LIMIT } from '../api/campers-api';
 
 export interface CampersSliceState {
   items: Camper[];
-  isLoading: boolean;
+  isInitialLoading: boolean;
   error: Error | null;
+
+  isLoadingMore: boolean;
+  nextPage: number;
+  isMoreDataToFetch: boolean;
+
+  camperSelectedForModal: null | Camper;
 }
 
 export interface Review {
@@ -70,27 +55,105 @@ export interface Camper {
   };
   gallery: string[];
   reviews: Review[];
+  favorite?: boolean;
 }
+
+export type UpdateCamper = { _id: string } & Partial<Omit<Camper, '_id'>>;
 
 const initialState: CampersSliceState = {
   items: [],
-  isLoading: false,
+  isInitialLoading: false,
   error: null,
+
+  isLoadingMore: false,
+  nextPage: 1,
+  isMoreDataToFetch: true,
+
+  camperSelectedForModal: null,
 };
 
 const campersSlice = createSlice({
   name: 'campers',
   initialState,
-  reducers: {},
+  reducers: {
+    updateCamper(state, action: PayloadAction<UpdateCamper>) {
+      const { _id, ...restCamper } = action.payload;
+
+      const idx = state.items.findIndex(camper => camper._id === _id);
+      if (idx === -1) {
+        return state;
+      }
+
+      const updatedCamper = {
+        ...state.items[idx],
+        ...restCamper,
+      };
+
+      const itemsCopy = [...state.items];
+      itemsCopy[idx] = updatedCamper;
+
+      return {
+        ...state,
+        items: itemsCopy,
+      };
+    },
+    setCamperSelectedForModal(
+      state,
+      action: PayloadAction<CampersSliceState['camperSelectedForModal']>
+    ) {
+      return {
+        ...state,
+        camperSelectedForModal: action.payload,
+      };
+    },
+    setCampersStateToInitial(state) {
+      Object.assign(state, initialState);
+    },
+  },
   extraReducers: builder => {
     builder
-      // fetchCampers
-      .addCase(fetchCampers.pending, handlePending)
-      .addCase(fetchCampers.rejected, handleRejected)
-      .addCase(fetchCampers.fulfilled, (state, action) => {
-        state.isLoading = false;
+      // fetchInitialCampers
+      .addCase(fetchInitialCampers.pending, state => {
+        console.log('.addCase(fetchInitialCampers.pending');
+        state.isInitialLoading = true;
+      })
+      .addCase(fetchInitialCampers.rejected, (state, action) => {
+        state.isInitialLoading = false;
+        state.error = action.payload as Error;
+      })
+      .addCase(fetchInitialCampers.fulfilled, (state, action) => {
+        const fetchedCampers = action.payload;
+
+        state.isInitialLoading = false;
         state.error = null;
-        state.items = action.payload;
+        state.items = fetchedCampers;
+
+        if (fetchedCampers.length === PER_PAGE_CAMPERS_LIMIT) {
+          state.nextPage += 1;
+        } else {
+          state.isMoreDataToFetch = false;
+        }
+      })
+      // fetchMoreCampers
+      .addCase(fetchMoreCampers.pending, state => {
+        state.isLoadingMore = true;
+      })
+      .addCase(fetchMoreCampers.rejected, (state, action) => {
+        state.isLoadingMore = false;
+        state.error = action.payload as Error;
+      })
+      .addCase(fetchMoreCampers.fulfilled, (state, action) => {
+        const fetchedCampers = action.payload;
+
+        state.isLoadingMore = false;
+        state.error = null;
+        state.items = state.items.concat(fetchedCampers);
+
+        if (fetchedCampers.length === PER_PAGE_CAMPERS_LIMIT) {
+          state.nextPage += 1;
+        } else {
+          state.isMoreDataToFetch = false;
+        }
       });
     // addContact
     // .addCase(addContact.pending, handlePending)
@@ -113,4 +176,9 @@ const campersSlice = createSlice({
   },
 });
 
+export const {
+  updateCamper,
+  setCamperSelectedForModal,
+  setCampersStateToInitial,
+} = campersSlice.actions;
 export const campersReducer = campersSlice.reducer;
