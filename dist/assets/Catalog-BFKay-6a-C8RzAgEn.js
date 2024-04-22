@@ -1,1 +1,0 @@
-import{a as c,P as s,L as o,I as p,Y as l}from"./index-Dladv8qV.js";import{s as m}from"./campers-CKcTMKlW-_F5eXiU4.js";const C=()=>{const a=c(),e=s.useCallback(()=>{a(o())},[a]),t=s.useCallback(({page:r})=>{a(p({page:r}))},[a]);return l.jsx(m,{fetchInitialCampersFunc:e,fetchMoreCampersFunc:t})};export{C as default};
