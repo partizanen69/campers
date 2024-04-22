@@ -12,10 +12,12 @@ import '@fontsource/inter/500.css';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 
+const BASE_PATH = '/campers';
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename={BASE_PATH}>
         <App />
       </BrowserRouter>
     </Provider>
